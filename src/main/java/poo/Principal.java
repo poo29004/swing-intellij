@@ -140,13 +140,14 @@ public class Principal {
     excluirLinhaButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        DefaultTableModel modelo = (DefaultTableModel) tableFuncionarios.getModel();
-        int totalLinhasSelecionadas  = tableFuncionarios.getSelectedRows().length;
+        if (JOptionPane.showConfirmDialog(null,"Você realmente deseja excluir esse registro?", "Confirma exclusão", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == 0) {
+            DefaultTableModel modelo = (DefaultTableModel) tableFuncionarios.getModel();
+            int totalLinhasSelecionadas = tableFuncionarios.getSelectedRows().length;
 
-        for (int i = 0; i < totalLinhasSelecionadas; i++) {
-          modelo.removeRow(tableFuncionarios.getSelectedRow());
+            for (int i = 0; i < totalLinhasSelecionadas; i++) {
+                modelo.removeRow(tableFuncionarios.getSelectedRow());
+            }
         }
-
       }
     });
     jFTFCpf.addFocusListener(new FocusAdapter() {
